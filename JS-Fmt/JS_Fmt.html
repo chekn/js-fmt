@@ -1,0 +1,87 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<meta http-equiv="Content-Language" content="zh-cn" />
+		<title> JS-Fmt </title>
+		<meta name="author" content="" />
+		<meta name="keywords" content="" />
+		<meta name="description" content="" />
+		<link rel="stylesheet" href="css/jquery-ui.css" />
+		<script type="text/javascript" src="js/jsbeautify.js"></script>
+		<script type="text/javascript" src="js/jquery-1.7.2.min.js"></script>
+		<script type="text/javascript" src="js/jquery-ui.js" ></script>
+		
+		<script type="text/javascript">
+			$(function(){
+				$("#minBtn").on("click",function() {
+					$("#valueAct").dialog({ modal: true , width: "auto" });
+				});
+				
+				$(".langID_button_1").click(function() {
+					console.info("ccc");
+					
+					var js_source =$('#showValue').val().replace(/^\s+/, '');
+					if(js_source.length==0) {
+						$("#valueAct").dialog("close");
+						return;
+					}
+					
+					var tabsize = 1;
+					tabchar = '\t';
+					var fjs = js_beautify(js_source, tabsize, tabchar);
+					$("#pretty").html("<![CDATA["+fjs+"]]>");
+					
+					$('#showValue').val("");
+					//console.info(fjs);
+					$("#valueAct").dialog("close");
+				});
+			});
+		</script>
+		
+		<style type="text/css">
+			#minBtn {
+				position:fixed;
+				top:23px;
+				right:20px;
+				cursor: pointer;
+			}
+			
+			#valueAct{
+				display:none;
+			}
+			
+			.langID_button_1 {
+				margin-top:10px;
+				float:right;
+			}
+			
+			#pretty {
+				white-space:　pre-wrap;　　　　/*　css-3　*/
+				white-space:　-moz-pre-wrap;　/*　Mozilla,　since　1999　*/
+				white-space:　-pre-wrap;　　　/*　Opera　4-6　*/
+				white-space:　-o-pre-wrap;　　/*　Opera　7　*/
+				word-wrap:　break-word;　　　　/*　Internet　Explorer　5.5+　*/
+			}
+		</style>
+		
+	</head>
+
+	<body>
+		<!-- {"eg": [3,4,5]} -->
+		<pre id='pretty' style="font-family:Consolas,微软雅黑; font-size:13px;"></pre>
+
+		<div id="panel" class="min disTransition">
+			<span id="minBtn">◥</span>
+		</div>
+
+		<div id="valueAct" >
+				<div class="topBox">
+					<textarea id="showValue" rows="22" cols="66"></textarea><br />
+				</div>
+				<div class="bottomBox">
+					<button id="saveBtn" type="button" class="langID_button_1">OK</button>
+				</div>
+		</div>
+	</body>
+</html>

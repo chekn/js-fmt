@@ -12,39 +12,25 @@
 		<script type="text/javascript" src="js/jquery-1.7.2.min.js"></script>
 		<script type="text/javascript" src="js/jquery-ui.js" ></script>
 		
-		<script type="text/javascript">
-			$(function(){
-				$("#minBtn").on("click",function() {
-					$("#valueAct").dialog({ modal: true , width: "auto" });
-				});
-				
-				$(".langID_button_1").click(function() {
-					console.info("ccc");
-					
-					var js_source =$('#showValue').val().replace(/^\s+/, '');
-					if(js_source.length==0) {
-						$("#valueAct").dialog("close");
-						return;
-					}
-					
-					var tabsize = 1;
-					tabchar = '\t';
-					var fjs = js_beautify(js_source, tabsize, tabchar);
-					$("#pretty").html("<![CDATA["+fjs+"]]>");
-					
-					$('#showValue').val("");
-					//console.info(fjs);
-					$("#valueAct").dialog("close");
-				});
-			});
-		</script>
+		<script type="text/javascript" src="js/init.js"></script>
 		
 		<style type="text/css">
-			#minBtn {
+			#panel {
 				position:fixed;
 				top:23px;
 				right:20px;
+				width:60px;
+				height:60px;
+				background-color: #f3f5ff;
 				cursor: pointer;
+			}
+				
+			#minBtn {
+				color: #577cff;
+				cursor: pointer;
+				position: absolute;
+				right: 5px;
+				top: 5px;
 			}
 			
 			#valueAct{

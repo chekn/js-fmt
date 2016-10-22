@@ -18,7 +18,15 @@ $(function() {
 		var tabsize = 1;
 		tabchar = '\t';
 		var fjs = js_beautify(js_source, tabsize, tabchar);
-		$("#pretty").text( fjs );
+		
+		var arr = $("<div/>").text(fjs).html().split("\n");
+		var text = "";
+		$.each(arr,function(i,item){
+		    if(item.trim()!=""){
+		        text += "<span class='rn' style='color:#cadcad; display:inline-block; width:50px;'>"+ (i+1) +"</span>"+ item + "\n";
+		    }
+		});
+		$("#pretty").html(text);
 
 		$('#showValue').val("");
 		// console.info(fjs);

@@ -23,7 +23,7 @@ $(function() {
 		var text = "";
 		$.each(arr,function(i,item){
 		    if(item.trim()!=""){
-		        text += "<span class='rn' style='color:#cadcad; display:inline-block; width:50px;'>"+ (i+1) +"</span>"+ item + "\n";
+		        text += "<span class='rn' style='color:#cadcad; display:inline-block; width:50px; left: 0px; position: absolute;'>"+ (i+1) +"</span>"+ item + "\n";
 		    }
 		});
 		$("#pretty").html(text);
